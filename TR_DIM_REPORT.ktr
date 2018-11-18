@@ -531,7 +531,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>/Users/andrewmartinez/Desktop/Group_D_ETL/Output/Cleaned_File.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/OUTPUT/Cleaned_File.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -623,7 +623,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>primary_name</name>
+        <name>company_or_last_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -634,7 +634,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>second_or_last_name</name>
+        <name>first_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -805,7 +805,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>100</length>
+        <length>5</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -849,7 +849,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>300</length>
+        <length>100</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -862,7 +862,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
+      <xloc>128</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -945,23 +945,18 @@
     <fields>
       <field>
         <name>file_num</name>
-        <rename/>
       </field>
       <field>
         <name>amndt_ind</name>
-        <rename/>
       </field>
       <field>
         <name>rpt_tp</name>
-        <rename/>
       </field>
       <field>
         <name>tran_id</name>
-        <rename/>
       </field>
       <field>
         <name>report</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

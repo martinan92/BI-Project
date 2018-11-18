@@ -531,7 +531,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>/Users/andrewmartinez/Desktop/Group_D_ETL/Output/Cleaned_File.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/OUTPUT/Cleaned_File.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -554,7 +554,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>cmte_id</name>
@@ -565,7 +565,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>amndt_ind</name>
@@ -576,7 +576,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>rpt_tp</name>
@@ -587,7 +587,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_pgi</name>
@@ -598,7 +598,7 @@
         <group>,</group>
         <length>5</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_tp</name>
@@ -609,7 +609,7 @@
         <group>,</group>
         <length>3</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>entity_tp</name>
@@ -620,10 +620,10 @@
         <group>,</group>
         <length>3</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
-        <name>primary_name</name>
+        <name>company_or_last_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -631,10 +631,10 @@
         <group>,</group>
         <length>100</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
-        <name>second_or_last_name</name>
+        <name>first_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -642,18 +642,18 @@
         <group>,</group>
         <length>75</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>additional_titles</name>
-        <type>Boolean</type>
+        <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>50</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>city</name>
@@ -664,7 +664,7 @@
         <group>,</group>
         <length>17</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>country</name>
@@ -675,7 +675,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>state</name>
@@ -686,7 +686,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>zip_code</name>
@@ -708,7 +708,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_amt</name>
@@ -719,7 +719,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>other_id</name>
@@ -730,7 +730,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>cand_id</name>
@@ -741,7 +741,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>tran_id</name>
@@ -752,7 +752,7 @@
         <group>,</group>
         <length>11</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>sub_id</name>
@@ -763,7 +763,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>year</name>
@@ -774,7 +774,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>month</name>
@@ -785,7 +785,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>day</name>
@@ -796,7 +796,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>election_type</name>
@@ -805,9 +805,9 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>100</length>
+        <length>5</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>election_year</name>
@@ -818,7 +818,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>final_transaction_pgi</name>
@@ -829,7 +829,7 @@
         <group>,</group>
         <length>5</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>report</name>
@@ -840,7 +840,7 @@
         <group>,</group>
         <length>50</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>contributor</name>
@@ -849,9 +849,9 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>300</length>
+        <length>100</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
     </fields>
     <cluster_schema/>
@@ -863,65 +863,6 @@
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>contributor</name>
-        <rename/>
-      </field>
-      <field>
-        <name>cmte_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>entity_tp</name>
-        <rename/>
-      </field>
-      <field>
-        <name>primary_name</name>
-        <rename/>
-      </field>
-      <field>
-        <name>second_or_last_name</name>
-        <rename/>
-      </field>
-      <field>
-        <name>additional_titles</name>
-        <rename/>
-      </field>
-      <field>
-        <name>other_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>zip_code</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -962,14 +903,14 @@
         <name2/>
       </key>
       <key>
-        <name>primary_name</name>
-        <field>primary_name</field>
+        <name>company_or_last_name</name>
+        <field>company_or_last_name</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
-        <name>second_or_last_name</name>
-        <field>second_or_last_name</field>
+        <name>first_name</name>
+        <field>first_name</field>
         <condition>=</condition>
         <name2/>
       </key>
@@ -1001,13 +942,13 @@
         <update>Y</update>
       </value>
       <value>
-        <name>primary_name</name>
-        <rename>primary_name</rename>
+        <name>company_or_last_name</name>
+        <rename>company_or_last_name</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>second_or_last_name</name>
-        <rename>second_or_last_name</rename>
+        <name>first_name</name>
+        <rename>first_name</rename>
         <update>Y</update>
       </value>
       <value>
@@ -1030,6 +971,65 @@
     </remotesteps>
     <GUI>
       <xloc>800</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>contributor</name>
+        <rename/>
+      </field>
+      <field>
+        <name>cmte_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>entity_tp</name>
+        <rename/>
+      </field>
+      <field>
+        <name>company_or_last_name</name>
+        <rename/>
+      </field>
+      <field>
+        <name>first_name</name>
+        <rename/>
+      </field>
+      <field>
+        <name>additional_titles</name>
+        <rename/>
+      </field>
+      <field>
+        <name>other_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>zip_code</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>

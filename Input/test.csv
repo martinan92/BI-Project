@@ -1,0 +1,3 @@
+file_num,cmte_id,amndt_ind,rpt_tp,transaction_pgi,transaction_tp,entity_tp,name,city,country,state,zip_code,transaction_dt,transaction_amt,other_id,cand_id,tran_id,memo_cd,sub_id
+1156533,C00331496,A,YE,2,24K,CCM,STEVE KNIGHT FOR CONGRESS,SANTA CLARITA            ,US                       ,CA,91380,10/21/16,2000,C00554014,H4CA25123,21-7114    ,,4.04132E+18
+1142144,C90016213,N,YE,G2016,24A,ORG,AIR CANADA,SAINT LAURENT            ,US                       ,ZZ,H4S1Z3         ,10/5/16,957,P80001571,P80001571,F57.4126   ,,4.02102E+18

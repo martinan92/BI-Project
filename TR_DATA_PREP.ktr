@@ -1343,7 +1343,7 @@
             <negated>N</negated>
             <operator>AND</operator>
             <leftvalue>transaction_amt</leftvalue>
-            <function>&gt;</function>
+            <function>&lt;></function>
             <rightvalue/>
             <value>
               <name>constant</name>

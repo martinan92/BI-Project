@@ -789,7 +789,7 @@
     </fields>
     <ConcatFields>
       <targetFieldName>contributor</targetFieldName>
-      <targetFieldLength>300</targetFieldLength>
+      <targetFieldLength>100</targetFieldLength>
       <removeSelectedFields>N</removeSelectedFields>
     </ConcatFields>
     <cluster_schema/>
@@ -1236,7 +1236,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>576</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>

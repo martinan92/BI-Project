@@ -517,26 +517,31 @@
     <hop>
       <from>Lookup dim_geography</from>
       <to>Lookup dim_report</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Lookup dim_report</from>
+      <to>Lookup dim_time</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Insert / Update</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Lookup dim_geography</from>
       <to>Lookup dim_time</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Lookup dim_time</from>
-      <to>Add constants: Number View</to>
+      <to>Add sequence</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants: Number View</from>
+      <from>Add sequence</from>
       <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Insert / Update</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -888,6 +893,147 @@
     </GUI>
   </step>
   <step>
+    <name>Insert / Update</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>local_host</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema/>
+      <table>f_transactions</table>
+      <key>
+        <name>id_contributor</name>
+        <field>id_contributor</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>id_election</name>
+        <field>id_election</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>id_geography</name>
+        <field>id_geography</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>id_time</name>
+        <field>id_time</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>transaction_tp</name>
+        <field>transaction_tp</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>transaction_amt</name>
+        <field>transaction_amt</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>cand_id</name>
+        <field>cand_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>tran_id</name>
+        <field>tran_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>sub_id</name>
+        <field>sub_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>number_view</name>
+        <field>number_view</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id_contributor</name>
+        <rename>id_contributor</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>id_election</name>
+        <rename>id_election</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>id_geography</name>
+        <rename>id_geography</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>id_time</name>
+        <rename>id_time</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>transaction_tp</name>
+        <rename>transaction_tp</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>transaction_amt</name>
+        <rename>transaction_amt</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>cand_id</name>
+        <rename>cand_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>tran_id</name>
+        <rename>tran_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>sub_id</name>
+        <rename>sub_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>number_view</name>
+        <rename>number_view</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Lookup dim_contributor</name>
     <type>CombinationLookup</type>
     <description/>
@@ -1118,44 +1264,6 @@
     </GUI>
   </step>
   <step>
-    <name>Add constants: Number View</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>number_view</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
@@ -1177,10 +1285,6 @@
       </field>
       <field>
         <name>id_geography</name>
-        <rename/>
-      </field>
-      <field>
-        <name>id_report</name>
         <rename/>
       </field>
       <field>
@@ -1227,8 +1331,8 @@
     </GUI>
   </step>
   <step>
-    <name>Insert / Update</name>
-    <type>InsertUpdate</type>
+    <name>Add sequence</name>
+    <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1237,134 +1341,16 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <valuename>valuename</valuename>
+    <use_database>N</use_database>
     <connection>local_host</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema/>
-      <table>f_transactions</table>
-      <key>
-        <name>id_contributor</name>
-        <field>id_contributor</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>id_election</name>
-        <field>id_election</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>id_geography</name>
-        <field>id_geography</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>id_report</name>
-        <field>id_report</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>id_time</name>
-        <field>id_time</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>transaction_tp</name>
-        <field>transaction_tp</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>transaction_amt</name>
-        <field>transaction_amt</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>cand_id</name>
-        <field>cand_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>tran_id</name>
-        <field>tran_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>sub_id</name>
-        <field>sub_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>number_view</name>
-        <field>number_view</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id_contributor</name>
-        <rename>id_contributor</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id_election</name>
-        <rename>id_election</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id_geography</name>
-        <rename>id_geography</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id_report</name>
-        <rename>id_report</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>id_time</name>
-        <rename>id_time</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>transaction_tp</name>
-        <rename>transaction_tp</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>transaction_amt</name>
-        <rename>transaction_amt</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>cand_id</name>
-        <rename>cand_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>tran_id</name>
-        <rename>tran_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>sub_id</name>
-        <rename>sub_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>number_view</name>
-        <rename>number_view</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1373,7 +1359,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
+      <xloc>640</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>

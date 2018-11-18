@@ -443,11 +443,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select: Remove Uneeded Columns</from>
-      <to>Split Fields: Create Separate Name Columns</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Split Fields: Create Separate Country Field</from>
       <to>If field value is null: Fill in US</to>
       <enabled>Y</enabled>
@@ -463,21 +458,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Calculator: Create Derived Date Fields</from>
-      <to>Strings cut</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Data Validator: Check If Populated Election_Type Values are Valid</from>
-      <to>Null if...</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Data Validator: Check If Populated Election_Type Values are Valid</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Strings cut</from>
       <to>Select values: Convert election_year to INT</to>
       <enabled>Y</enabled>
@@ -486,11 +466,6 @@
       <from>Select values: Convert election_year to INT</from>
       <to>Calculator: Fill Blank Election Years</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Null if...</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Calculator: Fill Blank Election Years</from>
@@ -518,11 +493,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Dummy (do nothing)</from>
-      <to>Select values: Change Election_Year to String</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values: Change Election_Year to String</from>
       <to>Concat Fields: Create Election Key</to>
       <enabled>Y</enabled>
@@ -538,13 +508,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Data Validator: Zip_Code Validator</from>
-      <to>Concat Fields: Create Contributor ID</to>
+      <from>Concat Fields: Create Contributor ID</from>
+      <to>Text file output: Clean_file.csv</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Concat Fields: Create Contributor ID</from>
-      <to>Text file output: Clean_file.csv</to>
+      <from>String operations: Trim All Fields</from>
+      <to>Split Fields: Create Separate Country Field</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -553,8 +523,68 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>String operations: Trim All Fields</from>
-      <to>Split Fields: Create Separate Country Field</to>
+      <from>Calculator: Create Derived Date Fields</from>
+      <to>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
+      <to>Strings cut</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Data Validator: Check If Populated Election_Type Values are Valid</from>
+      <to>Dummy (do nothing) 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Data Validator: Zip_Code Validator</from>
+      <to>Filter rows: Non-US Contributors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Non-US Contributors</from>
+      <to>Concat Fields: Create Contributor ID</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Non-US Contributors</from>
+      <to>Replace in string: Create Dummy "99999" Value for Non-US</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string: Create Dummy "99999" Value for Non-US</from>
+      <to>Concat Fields: Create Contributor ID</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Data Validator: Check If Populated Election_Type Values are Valid</from>
+      <to>Select values: Change Election_Year to String</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select: Remove Uneeded Columns</from>
+      <to>Filter rows: Check for NULL Contributor Names</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Check for NULL Contributor Names</from>
+      <to>Split Fields: Create Separate Name Columns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Check for NULL Contributor Names</from>
+      <to>Replace in string: Rename Nulls as "Anonymous"</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string: Rename Nulls as "Anonymous"</from>
+      <to>Split Fields: Create Separate Name Columns</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -622,8 +652,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
-      <yloc>288</yloc>
+      <xloc>112</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -661,8 +691,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>416</yloc>
+      <xloc>592</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -709,7 +739,7 @@
     </file>
     <fields>
       <field>
-        <name>primary_name</name>
+        <name>company_or_last_name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -721,7 +751,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>second_or_last_name</name>
+        <name>first_name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -770,7 +800,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
+      <xloc>560</xloc>
       <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
@@ -855,7 +885,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>720</xloc>
       <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
@@ -940,7 +970,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>464</xloc>
       <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1002,8 +1032,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>416</yloc>
+      <xloc>992</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1057,31 +1087,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>768</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
+      <xloc>240</xloc>
       <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1105,8 +1111,56 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>864</yloc>
+      <xloc>48</xloc>
+      <yloc>624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 3</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 4</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1148,8 +1202,179 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>416</yloc>
+      <xloc>816</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows: Check for NULL Contributor Names</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Split Fields: Create Separate Name Columns</send_true_to>
+    <send_false_to>Replace in string: Rename Nulls as "Anonymous"</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>name</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows: Non-US Contributors</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Concat Fields: Create Contributor ID</send_true_to>
+    <send_false_to>Replace in string: Create Dummy "99999" Value for Non-US</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>country</leftvalue>
+        <function>LIKE</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>US</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Strings cut</send_true_to>
+    <send_false_to>Dummy (do nothing) 3</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>year</leftvalue>
+            <function>&gt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2014</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>year</leftvalue>
+            <function>&lt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2016</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>cand_id</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>transaction_amt</leftvalue>
+            <function>&gt;</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>0</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>transaction_pgi</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1187,8 +1412,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>288</yloc>
+      <xloc>656</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1226,7 +1451,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>cmte_id</name>
@@ -1237,7 +1462,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>amndt_ind</name>
@@ -1248,7 +1473,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>rpt_tp</name>
@@ -1259,7 +1484,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_pgi</name>
@@ -1270,7 +1495,7 @@
         <group>,</group>
         <length>5</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>image_num</name>
@@ -1281,7 +1506,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_tp</name>
@@ -1292,7 +1517,7 @@
         <group>,</group>
         <length>3</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>entity_tp</name>
@@ -1303,7 +1528,7 @@
         <group>,</group>
         <length>3</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>name</name>
@@ -1314,7 +1539,7 @@
         <group>,</group>
         <length>21</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>city</name>
@@ -1325,7 +1550,7 @@
         <group>,</group>
         <length>17</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>state</name>
@@ -1336,7 +1561,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>zip_code</name>
@@ -1347,7 +1572,7 @@
         <group>,</group>
         <length>15</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>employer</name>
@@ -1358,7 +1583,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>occupation</name>
@@ -1369,7 +1594,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_dt</name>
@@ -1380,7 +1605,7 @@
         <group>,</group>
         <length>19</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_amt</name>
@@ -1391,7 +1616,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>other_id</name>
@@ -1402,7 +1627,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>cand_id</name>
@@ -1413,7 +1638,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>tran_id</name>
@@ -1424,7 +1649,7 @@
         <group>,</group>
         <length>11</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>memo_cd</name>
@@ -1435,7 +1660,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>memo_text</name>
@@ -1446,7 +1671,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>sub_id</name>
@@ -1457,7 +1682,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
     </fields>
     <cluster_schema/>
@@ -1468,14 +1693,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>32</yloc>
+      <xloc>64</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Null if...</name>
-    <type>NullIf</type>
+    <name>Replace in string: Create Dummy "99999" Value for Non-US</name>
+    <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1486,8 +1711,16 @@
     </partitioning>
     <fields>
       <field>
-        <name>election_type</name>
-        <value/>
+        <in_stream_name>zip_code</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string/>
+        <replace_by_string>99999</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
     </fields>
     <cluster_schema/>
@@ -1498,8 +1731,46 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>624</yloc>
+      <xloc>224</xloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string: Rename Nulls as "Anonymous"</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>name</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string/>
+        <replace_by_string>'Anonymous'</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1542,7 +1813,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>992</xloc>
       <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1586,8 +1857,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>288</yloc>
+      <xloc>400</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1630,8 +1901,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>416</yloc>
+      <xloc>320</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1660,6 +1931,9 @@
       <remove>
         <name>memo_text</name>
       </remove>
+      <remove>
+        <name>memo_cd</name>
+      </remove>
     </fields>
     <cluster_schema/>
     <remotesteps>
@@ -1669,8 +1943,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>160</yloc>
+      <xloc>304</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1699,8 +1973,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>352</yloc>
+      <xloc>992</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1758,7 +2032,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
+      <xloc>896</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1779,7 +2053,7 @@
     <enclosure/>
     <fields>
       <field>
-        <name>primary_name</name>
+        <name>company_or_last_name</name>
         <id/>
         <idrem>N</idrem>
         <type>String</type>
@@ -1794,7 +2068,7 @@
         <trimtype>none</trimtype>
       </field>
       <field>
-        <name>second_or_last_name</name>
+        <name>first_name</name>
         <id/>
         <idrem>N</idrem>
         <type>String</type>
@@ -1832,8 +2106,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>160</yloc>
+      <xloc>1136</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1852,7 +2126,7 @@
       <field>
         <in_stream_name>cmte_id</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1865,7 +2139,7 @@
       <field>
         <in_stream_name>rpt_tp</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1878,7 +2152,7 @@
       <field>
         <in_stream_name>transaction_pgi</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1891,7 +2165,7 @@
       <field>
         <in_stream_name>transaction_tp</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1904,7 +2178,7 @@
       <field>
         <in_stream_name>entity_tp</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1915,9 +2189,9 @@
         <remove_special_characters>none</remove_special_characters>
       </field>
       <field>
-        <in_stream_name>primary_name</in_stream_name>
+        <in_stream_name>company_or_last_name</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1928,9 +2202,9 @@
         <remove_special_characters>none</remove_special_characters>
       </field>
       <field>
-        <in_stream_name>second_or_last_name</in_stream_name>
+        <in_stream_name>first_name</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1943,7 +2217,7 @@
       <field>
         <in_stream_name>additional_titles</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1956,7 +2230,7 @@
       <field>
         <in_stream_name>city</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1969,7 +2243,7 @@
       <field>
         <in_stream_name>state</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1982,7 +2256,7 @@
       <field>
         <in_stream_name>zip_code</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -1995,7 +2269,7 @@
       <field>
         <in_stream_name>transaction_dt</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -2008,7 +2282,7 @@
       <field>
         <in_stream_name>other_id</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -2021,7 +2295,7 @@
       <field>
         <in_stream_name>cand_id</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -2034,7 +2308,7 @@
       <field>
         <in_stream_name>tran_id</in_stream_name>
         <out_stream_name/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
         <pad_char/>
@@ -2053,7 +2327,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
+      <xloc>1136</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2092,7 +2366,7 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>288</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2146,7 +2420,7 @@
         <decimal>.</decimal>
         <group>,</group>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>15</length>
         <precision>0</precision>
       </field>
@@ -2158,7 +2432,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>9</length>
         <precision>-1</precision>
       </field>
@@ -2170,7 +2444,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -2182,7 +2456,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>2</length>
         <precision>-1</precision>
       </field>
@@ -2194,7 +2468,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>5</length>
         <precision>-1</precision>
       </field>
@@ -2206,7 +2480,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>3</length>
         <precision>-1</precision>
       </field>
@@ -2218,12 +2492,12 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>3</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>primary_name</name>
+        <name>company_or_last_name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2235,7 +2509,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>second_or_last_name</name>
+        <name>first_name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2290,7 +2564,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>2</length>
         <precision>-1</precision>
       </field>
@@ -2302,7 +2576,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>15</length>
         <precision>-1</precision>
       </field>
@@ -2314,7 +2588,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>19</length>
         <precision>-1</precision>
       </field>
@@ -2326,7 +2600,7 @@
         <decimal>.</decimal>
         <group>,</group>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>15</length>
         <precision>0</precision>
       </field>
@@ -2338,7 +2612,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>9</length>
         <precision>-1</precision>
       </field>
@@ -2350,7 +2624,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>9</length>
         <precision>-1</precision>
       </field>
@@ -2362,7 +2636,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>11</length>
         <precision>-1</precision>
       </field>
@@ -2374,7 +2648,7 @@
         <decimal>.</decimal>
         <group>,</group>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>15</length>
         <precision>0</precision>
       </field>
@@ -2423,7 +2697,7 @@
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>100</length>
+        <length>5</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2471,7 +2745,7 @@
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>300</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
     </fields>
@@ -2483,7 +2757,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>784</xloc>
       <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2491,7 +2765,7 @@
   <step_error_handling>
     <error>
       <source_step>Data Validator: Check If Populated Election_Type Values are Valid</source_step>
-      <target_step>Null if...</target_step>
+      <target_step>Dummy (do nothing) 4</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename/>

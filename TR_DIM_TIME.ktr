@@ -542,7 +542,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>/Users/andrewmartinez/Desktop/Group_D_ETL/Output/Cleaned_File.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/OUTPUT/Cleaned_File.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -634,7 +634,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Primary Name</name>
+        <name>primary_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -645,18 +645,18 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Second or Last Name</name>
+        <name>second_or_last_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>10</length>
+        <length>9</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Additional Titles</name>
+        <name>additional_titles</name>
         <type>Boolean</type>
         <format/>
         <currency>$</currency>
@@ -701,14 +701,14 @@
       </field>
       <field>
         <name>zip_code</name>
-        <type>Integer</type>
-        <format>#</format>
+        <type>Number</type>
+        <format>#.#</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_dt</name>
@@ -766,17 +766,6 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>memo_cd</name>
-        <type>Boolean</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>sub_id</name>
         <type>Integer</type>
         <format>#</format>
@@ -821,7 +810,18 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PGI_Length</name>
+        <name>election_type</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>100</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>election_year</name>
         <type>Integer</type>
         <format>#</format>
         <currency>$</currency>
@@ -829,6 +829,39 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>final_transaction_pgi</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>5</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>report</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>50</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>contributor</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>300</length>
+        <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
     </fields>

@@ -634,7 +634,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>primary_name</name>
+        <name>company_or_last_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -645,13 +645,13 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>second_or_last_name</name>
+        <name>first_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>9</length>
+        <length>10</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -712,12 +712,12 @@
       </field>
       <field>
         <name>transaction_dt</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd</format>
+        <type>String</type>
+        <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -843,24 +843,13 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>report</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>50</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>contributor</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>300</length>
+        <length>100</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1006,7 +995,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
+      <xloc>848</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1095,7 +1084,7 @@
     <name>Unique rows</name>
     <type>Unique</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>

@@ -498,16 +498,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Concat Fields: Create Report ID</from>
-      <to>Data Validator: Zip_Code Validator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Concat Fields: Create Election Key</from>
-      <to>Concat Fields: Create Report ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Concat Fields: Create Contributor ID</from>
       <to>Text file output: Clean_file.csv</to>
       <enabled>Y</enabled>
@@ -518,23 +508,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Split Fields: Create Separate Name Columns</from>
-      <to>String operations: Trim All Fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Calculator: Create Derived Date Fields</from>
       <to>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
-      <to>Strings cut</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
-      <to>Dummy (do nothing) 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -568,23 +543,53 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select: Remove Uneeded Columns</from>
-      <to>Filter rows: Check for NULL Contributor Names</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows: Check for NULL Contributor Names</from>
-      <to>Split Fields: Create Separate Name Columns</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter rows: Check for NULL Contributor Names</from>
       <to>Replace in string: Rename Nulls as "Anonymous"</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Concat Fields: Create Election Key</from>
+      <to>Data Validator: Zip_Code Validator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split Fields: Create Separate Name Columns</from>
+      <to>Filter rows: Check for NULL Contributor Names</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Check for NULL Contributor Names</from>
+      <to>String operations: Trim All Fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Replace in string: Rename Nulls as "Anonymous"</from>
+      <to>String operations: Trim All Fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select: Remove Uneeded Columns</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
       <to>Split Fields: Create Separate Name Columns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
+      <to>Strings cut</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -891,91 +896,6 @@
     </GUI>
   </step>
   <step>
-    <name>Concat Fields: Create Report ID</name>
-    <type>ConcatFields</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator/>
-    <enclosure>"</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>file</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>tran_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>11</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>file_num</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>15</length>
-        <precision>0</precision>
-      </field>
-    </fields>
-    <ConcatFields>
-      <targetFieldName>report</targetFieldName>
-      <targetFieldLength>50</targetFieldLength>
-      <removeSelectedFields>N</removeSelectedFields>
-    </ConcatFields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Data Validator: Check If Populated Election_Type Values are Valid</name>
     <type>Validator</type>
     <description/>
@@ -1218,12 +1138,12 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Split Fields: Create Separate Name Columns</send_true_to>
+    <send_true_to>String operations: Trim All Fields</send_true_to>
     <send_false_to>Replace in string: Rename Nulls as "Anonymous"</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>name</leftvalue>
+        <leftvalue>company_or_last_name</leftvalue>
         <function>IS NOT NULL</function>
         <rightvalue/>
       </condition>
@@ -1236,7 +1156,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>1472</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1295,8 +1215,8 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Strings cut</send_true_to>
-    <send_false_to>Dummy (do nothing) 3</send_false_to>
+    <send_true_to>Dummy (do nothing) 3</send_true_to>
+    <send_false_to>Strings cut</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1304,7 +1224,7 @@
           <condition>
             <negated>N</negated>
             <leftvalue>year</leftvalue>
-            <function>&gt;=</function>
+            <function>&lt;</function>
             <rightvalue/>
             <value>
               <name>constant</name>
@@ -1318,9 +1238,9 @@
           </condition>
           <condition>
             <negated>N</negated>
-            <operator>AND</operator>
+            <operator>OR</operator>
             <leftvalue>year</leftvalue>
-            <function>&lt;=</function>
+            <function>&gt;</function>
             <rightvalue/>
             <value>
               <name>constant</name>
@@ -1334,16 +1254,16 @@
           </condition>
           <condition>
             <negated>N</negated>
-            <operator>AND</operator>
+            <operator>OR</operator>
             <leftvalue>cand_id</leftvalue>
-            <function>IS NOT NULL</function>
+            <function>IS NULL</function>
             <rightvalue/>
           </condition>
           <condition>
             <negated>N</negated>
-            <operator>AND</operator>
+            <operator>OR</operator>
             <leftvalue>transaction_amt</leftvalue>
-            <function>&lt;></function>
+            <function>=</function>
             <rightvalue/>
             <value>
               <name>constant</name>
@@ -1357,9 +1277,9 @@
           </condition>
           <condition>
             <negated>N</negated>
-            <operator>AND</operator>
+            <operator>OR</operator>
             <leftvalue>transaction_pgi</leftvalue>
-            <function>IS NOT NULL</function>
+            <function>IS NULL</function>
             <rightvalue/>
           </condition>
         </conditions>
@@ -1466,7 +1386,7 @@
       </field>
       <field>
         <name>amndt_ind</name>
-        <type>Boolean</type>
+        <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
@@ -1749,11 +1669,11 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>name</in_stream_name>
+        <in_stream_name>company_or_last_name</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string/>
-        <replace_by_string>'Anonymous'</replace_by_string>
+        <replace_by_string>Anonymous</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -1769,8 +1689,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>80</yloc>
+      <xloc>1472</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1837,7 +1757,7 @@
         <type>Date</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>yyyy-mm-dd</conversion_mask>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -2106,7 +2026,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
+      <xloc>1168</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2438,7 +2358,7 @@
       </field>
       <field>
         <name>amndt_ind</name>
-        <type>Boolean</type>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2583,7 +2503,7 @@
       <field>
         <name>transaction_dt</name>
         <type>Date</type>
-        <format>yyyy-mm-dd</format>
+        <format>yyyy-MM-dd</format>
         <currency/>
         <decimal/>
         <group/>
@@ -2697,7 +2617,7 @@
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>5</length>
+        <length>100</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2725,18 +2645,6 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>report</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>50</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>contributor</name>
         <type>String</type>
         <format/>
@@ -2759,6 +2667,76 @@
     <GUI>
       <xloc>784</xloc>
       <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Dummy (do nothing)</send_true_to>
+    <send_false_to>Split Fields: Create Separate Name Columns</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>name</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue/>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>entity_tp</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue/>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

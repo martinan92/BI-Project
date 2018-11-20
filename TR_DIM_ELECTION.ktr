@@ -531,7 +531,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>/Users/andrewmartinez/Desktop/Group_D_ETL/Output/Cleaned_File.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/OUTPUT/Cleaned_File.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -623,7 +623,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>primary_name</name>
+        <name>company_or_last_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -634,7 +634,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>second_or_last_name</name>
+        <name>first_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -755,17 +755,6 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>memo_cd</name>
-        <type>Boolean</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>sub_id</name>
         <type>Integer</type>
         <format>#</format>
@@ -816,7 +805,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>100</length>
+        <length>5</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -839,6 +828,17 @@
         <decimal>.</decimal>
         <group>,</group>
         <length>5</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>contributor</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>100</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -934,15 +934,12 @@
     <fields>
       <field>
         <name>election_type</name>
-        <rename/>
       </field>
       <field>
         <name>election_year</name>
-        <rename/>
       </field>
       <field>
         <name>final_transaction_pgi</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

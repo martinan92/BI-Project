@@ -832,17 +832,6 @@
         <trim_type>both</trim_type>
       </field>
       <field>
-        <name>report</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>50</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
         <name>contributor</name>
         <type>String</type>
         <format/>
@@ -989,35 +978,27 @@
     <fields>
       <field>
         <name>contributor</name>
-        <rename/>
       </field>
       <field>
         <name>cmte_id</name>
-        <rename/>
       </field>
       <field>
         <name>entity_tp</name>
-        <rename/>
       </field>
       <field>
         <name>company_or_last_name</name>
-        <rename/>
       </field>
       <field>
         <name>first_name</name>
-        <rename/>
       </field>
       <field>
         <name>additional_titles</name>
-        <rename/>
       </field>
       <field>
         <name>other_id</name>
-        <rename/>
       </field>
       <field>
         <name>zip_code</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

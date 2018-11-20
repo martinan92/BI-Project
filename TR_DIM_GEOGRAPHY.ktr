@@ -683,7 +683,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>2</length>
+        <length>10</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -838,17 +838,6 @@
         <decimal>.</decimal>
         <group>,</group>
         <length>5</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>report</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>50</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -1024,19 +1013,15 @@
     <fields>
       <field>
         <name>city</name>
-        <rename/>
       </field>
       <field>
         <name>country</name>
-        <rename/>
       </field>
       <field>
         <name>state</name>
-        <rename/>
       </field>
       <field>
         <name>zip_code</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

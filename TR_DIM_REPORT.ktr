@@ -547,13 +547,13 @@
     <fields>
       <field>
         <name>file_num</name>
-        <type>Integer</type>
-        <format>#</format>
+        <type>String</type>
+        <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>15</length>
-        <precision>0</precision>
+        <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
@@ -805,7 +805,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>5</length>
+        <length>100</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -828,17 +828,6 @@
         <decimal>.</decimal>
         <group>,</group>
         <length>5</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>report</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>50</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -885,8 +874,8 @@
       <schema/>
       <table>d_report</table>
       <key>
-        <name>report</name>
-        <field>report</field>
+        <name>file_num</name>
+        <field>file_num</field>
         <condition>=</condition>
         <name2/>
       </key>
@@ -902,9 +891,15 @@
         <condition>=</condition>
         <name2/>
       </key>
+      <key>
+        <name>tran_id</name>
+        <field>tran_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
       <value>
-        <name>report</name>
-        <rename>report</rename>
+        <name>file_num</name>
+        <rename>file_num</rename>
         <update>Y</update>
       </value>
       <value>
@@ -915,6 +910,11 @@
       <value>
         <name>rpt_tp</name>
         <rename>rpt_tp</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>tran_id</name>
+        <rename>tran_id</rename>
         <update>Y</update>
       </value>
     </lookup>
@@ -955,9 +955,6 @@
       <field>
         <name>tran_id</name>
       </field>
-      <field>
-        <name>report</name>
-      </field>
       <select_unspecified>N</select_unspecified>
     </fields>
     <cluster_schema/>
@@ -993,7 +990,7 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>report</name>
+        <name>file_num</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -1031,7 +1028,7 @@
     <error_description/>
     <fields>
       <field>
-        <name>report</name>
+        <name>file_num</name>
         <case_insensitive>N</case_insensitive>
       </field>
     </fields>

@@ -505,11 +505,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Lookup dim_contributor</from>
-      <to>Lookup dim_election</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Lookup dim_election</from>
       <to>Lookup dim_geography</to>
       <enabled>Y</enabled>
@@ -539,12 +534,17 @@
       <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Lookup dim_contributor</from>
+      <to>Lookup dim_election</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Add sequence</name>
     <type>Sequence</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -578,7 +578,7 @@
     <name>CSV file input</name>
     <type>CsvInput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -683,7 +683,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>18</length>
+        <length>8</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -694,18 +694,18 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>10</length>
+        <length>7</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
       <field>
         <name>additional_titles</name>
-        <type>String</type>
+        <type>Boolean</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>50</length>
+        <length>-1</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -716,7 +716,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>17</length>
+        <length>11</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -744,8 +744,8 @@
       </field>
       <field>
         <name>zip_code</name>
-        <type>Number</type>
-        <format>#.#</format>
+        <type>Integer</type>
+        <format>#</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
@@ -859,7 +859,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>100</length>
+        <length>1</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -892,7 +892,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>100</length>
+        <length>22</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -954,42 +954,6 @@
       <key>
         <name>id_report</name>
         <field>id_report</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>transaction_tp</name>
-        <field>transaction_tp</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>transaction_amt</name>
-        <field>transaction_amt</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>cand_id</name>
-        <field>cand_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>tran_id</name>
-        <field>tran_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>sub_id</name>
-        <field>sub_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>number_view</name>
-        <field>number_view</field>
         <condition>=</condition>
         <name2/>
       </key>
@@ -1135,8 +1099,8 @@
       </key>
       <return>
         <name>id_election</name>
-        <creation_method>tablemax</creation_method>
-        <use_autoinc>N</use_autoinc>
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
       </return>
     </fields>
     <sequence/>
@@ -1149,7 +1113,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>448</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1181,8 +1145,8 @@
       </key>
       <return>
         <name>id_geography</name>
-        <creation_method>tablemax</creation_method>
-        <use_autoinc>N</use_autoinc>
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
       </return>
     </fields>
     <sequence/>
@@ -1227,8 +1191,8 @@
       </key>
       <return>
         <name>id_report</name>
-        <creation_method>tablemax</creation_method>
-        <use_autoinc>N</use_autoinc>
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
       </return>
     </fields>
     <sequence/>
@@ -1273,8 +1237,8 @@
       </key>
       <return>
         <name>id_time</name>
-        <creation_method>tablemax</creation_method>
-        <use_autoinc>N</use_autoinc>
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
       </return>
     </fields>
     <sequence/>

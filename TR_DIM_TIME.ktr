@@ -565,7 +565,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>cmte_id</name>
@@ -576,7 +576,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>amndt_ind</name>
@@ -587,7 +587,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>rpt_tp</name>
@@ -598,7 +598,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_pgi</name>
@@ -609,7 +609,7 @@
         <group>,</group>
         <length>5</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_tp</name>
@@ -620,7 +620,7 @@
         <group>,</group>
         <length>3</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>entity_tp</name>
@@ -631,7 +631,7 @@
         <group>,</group>
         <length>3</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>company_or_last_name</name>
@@ -642,7 +642,7 @@
         <group>,</group>
         <length>18</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>first_name</name>
@@ -653,7 +653,7 @@
         <group>,</group>
         <length>10</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>additional_titles</name>
@@ -664,7 +664,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>city</name>
@@ -675,7 +675,7 @@
         <group>,</group>
         <length>17</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>country</name>
@@ -686,7 +686,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>state</name>
@@ -697,7 +697,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>zip_code</name>
@@ -719,7 +719,7 @@
         <group>,</group>
         <length>10</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>transaction_amt</name>
@@ -730,7 +730,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>other_id</name>
@@ -741,7 +741,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>cand_id</name>
@@ -752,7 +752,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>tran_id</name>
@@ -763,7 +763,7 @@
         <group>,</group>
         <length>11</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>sub_id</name>
@@ -774,7 +774,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>year</name>
@@ -785,7 +785,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>month</name>
@@ -796,7 +796,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>day</name>
@@ -807,7 +807,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>election_type</name>
@@ -818,7 +818,7 @@
         <group>,</group>
         <length>100</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>election_year</name>
@@ -829,7 +829,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>final_transaction_pgi</name>
@@ -840,7 +840,7 @@
         <group>,</group>
         <length>5</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>contributor</name>
@@ -851,7 +851,7 @@
         <group>,</group>
         <length>100</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
     </fields>
     <cluster_schema/>

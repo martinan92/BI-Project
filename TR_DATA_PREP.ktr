@@ -498,11 +498,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Concat Fields: Create Contributor ID</from>
-      <to>Text file output: Clean_file.csv</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>String operations: Trim All Fields</from>
       <to>Split Fields: Create Separate Country Field</to>
       <enabled>Y</enabled>
@@ -590,6 +585,16 @@
     <hop>
       <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
       <to>Strings cut</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Concat Fields: Create Contributor ID</from>
+      <to>String operations: Trim All Columns Before Loading</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations: Trim All Columns Before Loading</from>
+      <to>Text file output: Clean_file.csv</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -794,7 +799,7 @@
     </fields>
     <ConcatFields>
       <targetFieldName>contributor</targetFieldName>
-      <targetFieldLength>100</targetFieldLength>
+      <targetFieldLength>0</targetFieldLength>
       <removeSelectedFields>N</removeSelectedFields>
     </ConcatFields>
     <cluster_schema/>
@@ -879,7 +884,7 @@
     </fields>
     <ConcatFields>
       <targetFieldName>final_transaction_pgi</targetFieldName>
-      <targetFieldLength>5</targetFieldLength>
+      <targetFieldLength>0</targetFieldLength>
       <removeSelectedFields>N</removeSelectedFields>
     </ConcatFields>
     <cluster_schema/>
@@ -1013,6 +1018,30 @@
     </GUI>
   </step>
   <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Dummy (do nothing) 2</name>
     <type>Dummy</type>
     <description/>
@@ -1081,6 +1110,52 @@
     <GUI>
       <xloc>1136</xloc>
       <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Dummy (do nothing)</send_true_to>
+    <send_false_to>Split Fields: Create Separate Name Columns</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>name</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue/>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>entity_tp</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue/>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1391,7 +1466,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>-1</length>
+        <length>1</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -1600,7 +1675,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>15</length>
+        <length>25</length>
         <precision>0</precision>
         <trim_type>both</trim_type>
       </field>
@@ -2335,14 +2410,14 @@
       <field>
         <name>file_num</name>
         <type>Integer</type>
-        <format>#</format>
+        <format>0</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>15</length>
-        <precision>0</precision>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
         <name>cmte_id</name>
@@ -2353,7 +2428,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>9</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2377,7 +2452,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2389,7 +2464,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>5</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2401,7 +2476,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>3</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2413,7 +2488,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>3</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2424,7 +2499,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -2436,7 +2511,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -2448,7 +2523,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -2460,7 +2535,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -2472,7 +2547,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -2485,7 +2560,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2497,7 +2572,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>15</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2509,20 +2584,20 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>19</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>transaction_amt</name>
         <type>Integer</type>
-        <format>#</format>
+        <format>0</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>15</length>
-        <precision>0</precision>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
         <name>other_id</name>
@@ -2533,7 +2608,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>9</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2545,7 +2620,7 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>9</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2557,56 +2632,56 @@
         <group/>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>11</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>sub_id</name>
         <type>Integer</type>
-        <format>#</format>
+        <format>0</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
         <nullif/>
         <trim_type>both</trim_type>
-        <length>15</length>
-        <precision>0</precision>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
         <name>year</name>
         <type>Integer</type>
-        <format/>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
-        <precision>0</precision>
+        <precision>-1</precision>
       </field>
       <field>
         <name>month</name>
         <type>Integer</type>
-        <format/>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
-        <precision>0</precision>
+        <precision>-1</precision>
       </field>
       <field>
         <name>day</name>
         <type>Integer</type>
-        <format/>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
-        <precision>0</precision>
+        <precision>-1</precision>
       </field>
       <field>
         <name>election_type</name>
@@ -2616,8 +2691,8 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
-        <length>100</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2628,7 +2703,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -2640,8 +2715,8 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
-        <length>5</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2652,8 +2727,8 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
-        <length>100</length>
+        <trim_type>both</trim_type>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
@@ -2665,14 +2740,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
+      <xloc>1136</xloc>
       <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
+    <name>String operations: Trim All Columns Before Loading</name>
+    <type>StringOperations</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2681,28 +2756,268 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Dummy (do nothing)</send_true_to>
-    <send_false_to>Split Fields: Create Separate Name Columns</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>name</leftvalue>
-            <function>IS NULL</function>
-            <rightvalue/>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>entity_tp</leftvalue>
-            <function>IS NULL</function>
-            <rightvalue/>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <fields>
+      <field>
+        <in_stream_name>cmte_id</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>amndt_ind</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>rpt_tp</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>transaction_pgi</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>transaction_tp</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>entity_tp</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>company_or_last_name</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>first_name</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>additional_titles</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>city</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>country</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>state</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>zip_code</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>other_id</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>cand_id</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>tran_id</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>election_type</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>election_year</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>final_transaction_pgi</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>contributor</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2711,32 +3026,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>656</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
-      <yloc>96</yloc>
+      <xloc>864</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

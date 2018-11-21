@@ -650,7 +650,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>10</length>
+        <length>9</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -672,7 +672,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>25</length>
+        <length>22</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -683,7 +683,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>10</length>
+        <length>2</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -700,8 +700,8 @@
       </field>
       <field>
         <name>zip_code</name>
-        <type>Number</type>
-        <format>#.#</format>
+        <type>Integer</type>
+        <format>#</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
@@ -815,7 +815,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>5</length>
+        <length>1</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -848,7 +848,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>100</length>
+        <length>28</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -994,7 +994,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
+      <xloc>816</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>

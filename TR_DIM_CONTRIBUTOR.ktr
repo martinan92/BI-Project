@@ -875,7 +875,7 @@
       <table>d_contributor</table>
       <key>
         <name>contributor</name>
-        <field>contributor</field>
+        <field>contributor_code</field>
         <condition>=</condition>
         <name2/>
       </key>
@@ -916,7 +916,7 @@
         <name2/>
       </key>
       <value>
-        <name>contributor</name>
+        <name>contributor_code</name>
         <rename>contributor</rename>
         <update>Y</update>
       </value>

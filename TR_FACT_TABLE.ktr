@@ -983,7 +983,7 @@
         <update>Y</update>
       </value>
       <value>
-        <name>transaction_tp</name>
+        <name>transaction_typ</name>
         <rename>transaction_tp</rename>
         <update>Y</update>
       </value>
@@ -998,18 +998,13 @@
         <update>Y</update>
       </value>
       <value>
-        <name>tranaction_id</name>
-        <rename>tran_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
         <name>transaction_sub_id</name>
         <rename>sub_id</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>number_view</name>
-        <rename>number_view</rename>
+        <name>transaction_id</name>
+        <rename>tran_id</rename>
         <update>Y</update>
       </value>
     </lookup>
@@ -1048,16 +1043,8 @@
     <crcfield>hashcode</crcfield>
     <fields>
       <key>
-        <name>company_or_last_name</name>
-        <lookup>Contributor_company_or_last_name</lookup>
-      </key>
-      <key>
-        <name>first_name</name>
-        <lookup>contributor_first_name</lookup>
-      </key>
-      <key>
-        <name>additional_titles</name>
-        <lookup>contributor_additional_titles</lookup>
+        <name>contributor</name>
+        <lookup>contributor_code</lookup>
       </key>
       <return>
         <name>id_contributor</name>

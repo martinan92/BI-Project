@@ -504,7 +504,7 @@
     </hop>
     <hop>
       <from>Calculator: Create Derived Date Fields</from>
-      <to>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</to>
+      <to>Filter rows: Remove $0 Transaction, Null Transaction_PGI and Null Candidate IDs</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -519,17 +519,7 @@
     </hop>
     <hop>
       <from>Filter rows: Non-US Contributors</from>
-      <to>Concat Fields: Create Contributor ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows: Non-US Contributors</from>
       <to>Replace in string: Create Dummy "99999" Value for Non-US</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string: Create Dummy "99999" Value for Non-US</from>
-      <to>Concat Fields: Create Contributor ID</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -578,23 +568,48 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
+      <from>Filter rows: Remove $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
       <to>Dummy (do nothing) 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
-      <to>Strings cut</to>
+      <from>Replace in string: Create Dummy "99999" Value for Non-US</from>
+      <to>If field value is null: Fill Null Zip_Codes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Concat Fields: Create Contributor ID</from>
-      <to>String operations: Trim All Columns Before Loading</to>
+      <from>If field value is null: Fill Null Zip_Codes</from>
+      <to>Concat Fields: Create Contributor ID</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Non-US Contributors</from>
+      <to>If field value is null: Fill Null Zip_Codes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>String operations: Trim All Columns Before Loading</from>
       <to>Text file output: Clean_file.csv</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Remove $0 Transaction, Null Transaction_PGI and Null Candidate IDs</from>
+      <to>Filter rows: Remove bad dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Remove bad dates</from>
+      <to>Strings cut</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows: Remove bad dates</from>
+      <to>Dummy (do nothing) 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Concat Fields: Create Contributor ID</from>
+      <to>String operations: Trim All Columns Before Loading</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -701,8 +716,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>432</yloc>
+      <xloc>624</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -810,7 +825,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
+      <xloc>624</xloc>
       <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1084,8 +1099,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>240</yloc>
+      <xloc>464</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1109,6 +1124,30 @@
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 5</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1247,7 +1286,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Concat Fields: Create Contributor ID</send_true_to>
+    <send_true_to>If field value is null: Fill Null Zip_Codes</send_true_to>
     <send_false_to>Replace in string: Create Dummy "99999" Value for Non-US</send_false_to>
     <compare>
       <condition>
@@ -1280,7 +1319,7 @@
     </GUI>
   </step>
   <step>
-    <name>Filter rows: Remove Outlier Dates, $0 Transaction, Null Transaction_PGI and Null Candidate IDs</name>
+    <name>Filter rows: Remove $0 Transaction, Null Transaction_PGI and Null Candidate IDs</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1291,42 +1330,11 @@
       <schema_name/>
     </partitioning>
     <send_true_to>Dummy (do nothing) 3</send_true_to>
-    <send_false_to>Strings cut</send_false_to>
+    <send_false_to>Filter rows: Remove bad dates</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
         <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>year</leftvalue>
-            <function>&lt;</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>2014</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>OR</operator>
-            <leftvalue>year</leftvalue>
-            <function>&gt;</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>2016</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
           <condition>
             <negated>N</negated>
             <operator>OR</operator>
@@ -1357,6 +1365,13 @@
             <function>IS NULL</function>
             <rightvalue/>
           </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>transaction_dt</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue/>
+          </condition>
         </conditions>
       </condition>
     </compare>
@@ -1369,7 +1384,110 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>304</yloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows: Remove bad dates</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 5</send_true_to>
+    <send_false_to>Strings cut</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>year</leftvalue>
+            <function>&lt;</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2011</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>year</leftvalue>
+            <function>&gt;</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2016</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>If field value is null: Fill Null Zip_Codes</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <replaceAllByValue/>
+    <replaceAllMask/>
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>zip_code</name>
+        <value>12345</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1896,8 +2014,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>432</yloc>
+      <xloc>336</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2387,7 +2505,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
+      <xloc>976</xloc>
       <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2647,7 +2765,7 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>432</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3026,7 +3144,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
+      <xloc>1264</xloc>
       <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>

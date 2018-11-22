@@ -891,12 +891,6 @@
         <condition>=</condition>
         <name2/>
       </key>
-      <key>
-        <name>tran_id</name>
-        <field>report_tran_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
       <value>
         <name>report_file_num</name>
         <rename>file_num</rename>
@@ -910,11 +904,6 @@
       <value>
         <name>report_type</name>
         <rename>rpt_tp</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>report_tran_id</name>
-        <rename>tran_id</rename>
         <update>Y</update>
       </value>
     </lookup>
@@ -945,15 +934,15 @@
     <fields>
       <field>
         <name>file_num</name>
+        <rename/>
       </field>
       <field>
         <name>amndt_ind</name>
+        <rename/>
       </field>
       <field>
         <name>rpt_tp</name>
-      </field>
-      <field>
-        <name>tran_id</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

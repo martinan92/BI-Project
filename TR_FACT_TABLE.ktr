@@ -926,7 +926,7 @@
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema/>
-      <table>f_transactions</table>
+      <table>f_transaction</table>
       <key>
         <name>id_contributor</name>
         <field>id_contributor</field>
@@ -993,17 +993,17 @@
         <update>Y</update>
       </value>
       <value>
-        <name>cand_id</name>
+        <name>transaction_candidate_id</name>
         <rename>cand_id</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>tran_id</name>
+        <name>tranaction_id</name>
         <rename>tran_id</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>sub_id</name>
+        <name>transaction_sub_id</name>
         <rename>sub_id</rename>
         <update>Y</update>
       </value>
@@ -1103,7 +1103,7 @@
     <fields>
       <key>
         <name>final_transaction_pgi</name>
-        <lookup>final_transaction_pgi</lookup>
+        <lookup>candidate_transaction_pgi</lookup>
       </key>
       <return>
         <name>id_election</name>
@@ -1149,7 +1149,7 @@
     <fields>
       <key>
         <name>zip_code</name>
-        <lookup>zip_code</lookup>
+        <lookup>geography_zip_code</lookup>
       </key>
       <return>
         <name>id_geography</name>
@@ -1195,7 +1195,7 @@
     <fields>
       <key>
         <name>file_num</name>
-        <lookup>file_num</lookup>
+        <lookup>report_file_num</lookup>
       </key>
       <return>
         <name>id_report</name>
@@ -1241,7 +1241,7 @@
     <fields>
       <key>
         <name>transaction_dt</name>
-        <lookup>transaction_dt</lookup>
+        <lookup>time_transaction_date</lookup>
       </key>
       <return>
         <name>id_time</name>

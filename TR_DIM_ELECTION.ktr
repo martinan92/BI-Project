@@ -510,13 +510,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
-      <to>Insert / Update</to>
+      <from>Select values</from>
+      <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>Sort rows</to>
+      <from>Unique rows</from>
+      <to>Insert / Update</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -554,7 +554,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>cmte_id</name>
@@ -565,7 +565,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>amndt_ind</name>
@@ -576,7 +576,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>rpt_tp</name>
@@ -587,7 +587,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>transaction_pgi</name>
@@ -598,7 +598,7 @@
         <group>,</group>
         <length>5</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>transaction_tp</name>
@@ -609,7 +609,7 @@
         <group>,</group>
         <length>3</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>entity_tp</name>
@@ -620,7 +620,7 @@
         <group>,</group>
         <length>3</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>company_or_last_name</name>
@@ -631,7 +631,7 @@
         <group>,</group>
         <length>18</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>first_name</name>
@@ -640,9 +640,9 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>10</length>
+        <length>9</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>additional_titles</name>
@@ -653,7 +653,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>city</name>
@@ -664,7 +664,7 @@
         <group>,</group>
         <length>17</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>country</name>
@@ -675,7 +675,7 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>state</name>
@@ -686,18 +686,18 @@
         <group>,</group>
         <length>2</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>zip_code</name>
-        <type>Number</type>
-        <format>#.#</format>
+        <type>Integer</type>
+        <format>#</format>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>transaction_dt</name>
@@ -708,7 +708,7 @@
         <group>,</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>transaction_amt</name>
@@ -719,7 +719,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>other_id</name>
@@ -730,7 +730,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>cand_id</name>
@@ -741,7 +741,7 @@
         <group>,</group>
         <length>9</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>tran_id</name>
@@ -752,7 +752,7 @@
         <group>,</group>
         <length>11</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>sub_id</name>
@@ -763,7 +763,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>year</name>
@@ -774,7 +774,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>month</name>
@@ -785,7 +785,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>day</name>
@@ -796,7 +796,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>election_type</name>
@@ -805,9 +805,9 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>5</length>
+        <length>1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>election_year</name>
@@ -818,7 +818,7 @@
         <group>,</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>final_transaction_pgi</name>
@@ -829,7 +829,7 @@
         <group>,</group>
         <length>5</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>contributor</name>
@@ -838,9 +838,9 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>100</length>
+        <length>28</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
     </fields>
     <cluster_schema/>
@@ -875,34 +875,34 @@
       <table>d_election</table>
       <key>
         <name>election_type</name>
-        <field>election_type</field>
+        <field>candidate_election_type</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
         <name>election_year</name>
-        <field>election_year</field>
+        <field>candidate_election_year</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
         <name>final_transaction_pgi</name>
-        <field>final_transaction_pgi</field>
+        <field>candidate_transaction_pgi</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>election_type</name>
+        <name>candidate_election_type</name>
         <rename>election_type</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>election_year</name>
+        <name>candidate_election_year</name>
         <rename>election_year</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>final_transaction_pgi</name>
+        <name>candidate_transaction_pgi</name>
         <rename>final_transaction_pgi</rename>
         <update>Y</update>
       </value>
@@ -915,7 +915,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>816</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
